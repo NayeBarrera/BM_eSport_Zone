@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'dart:async'; // Necesario para el temporizador
+import 'dart:async'; // Necessary for the timer
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const SplashScreen(), // Mostramos primero el Splash Screen
+      home: const SplashScreen(), // First show the Splash Screen
     );
   }
 }
@@ -31,9 +31,9 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    // Temporizador para mostrar el splash screen por 3 segundos
+    // Timer to show the splash screen for 3 seconds
     Timer(const Duration(seconds: 3), () {
-      // Navegamos a la pantalla principal
+      // Navigate to the main screen
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (context) => const HomeScreen(),
@@ -45,7 +45,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black, // Fondo negro
+      backgroundColor: Colors.black, // Black background
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -53,16 +53,16 @@ class _SplashScreenState extends State<SplashScreen> {
             Text(
               'BM',
               style: TextStyle(
-                color: Colors.white, // Texto blanco
-                fontSize: 50, // Tamaño grande para "BM"
+                color: Colors.white, // White text
+                fontSize: 50, // Large size for "BM"
                 fontWeight: FontWeight.bold,
               ),
             ),
             Text(
               'eSport Zone',
               style: TextStyle(
-                color: Colors.white, // Texto blanco
-                fontSize: 30, // Tamaño más pequeño para "eSport Zone"
+                color: Colors.white, // White text
+                fontSize: 30, // Smaller size for "eSport Zone"
               ),
             ),
           ],
@@ -72,7 +72,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 }
 
-// Pantalla Principal que se muestra después del Splash
+// Main screen displayed after the Splash
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -84,12 +84,12 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Logo de BM (puedes reemplazar esto con una imagen)
+            // BM Logo (you can replace this with an image)
             CircleAvatar(
               radius: 60,
-              backgroundImage: AssetImage('assets/logo.png'), // Asegúrate de tener la imagen en la carpeta assets
+              backgroundImage: AssetImage('assets/logo.png'), // Ensure the image is in the assets folder
             ),
-            const SizedBox(height: 20), // Espacio entre el logo y el texto
+            const SizedBox(height: 20), // Space between the logo and text
 
             const Text(
               'HOLA, BIENVENIDO/A\nBM eSports Zone',
@@ -100,12 +100,12 @@ class HomeScreen extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: 40), // Espacio entre el texto y los botones
+            const SizedBox(height: 40), // Space between text and buttons
 
-           // Botón BM CaféZone
+            // BM CaféZone Button
             ElevatedButton.icon(
               onPressed: () {
-                // Mostramos el diálogo con la descripción de BM CaféZone
+                // Show a dialog with BM CaféZone description
                 showDialog(
                   context: context,
                   builder: (BuildContext context) {
@@ -138,7 +138,6 @@ class HomeScreen extends StatelessWidget {
                   },
                 );
               },
-              
               icon: const Icon(Icons.local_cafe, color: Colors.black),
               label: const Text(
                 'BM CaféZone',
@@ -153,12 +152,12 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 20), // Espacio entre los botones
+            const SizedBox(height: 20), // Space between buttons
 
-            // Botón BM eSportsZone
+            // BM eSportsZone Button
             ElevatedButton.icon(
               onPressed: () {
-                // Mostramos el diálogo con la descripción de BM eSportsZone
+                // Show a dialog with BM eSportsZone description
                 showDialog(
                   context: context,
                   builder: (BuildContext context) {
@@ -208,6 +207,144 @@ class HomeScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(30),
                 ),
               ),
+            ),
+            const SizedBox(height: 40), // Additional space
+
+            const Text(
+              'Ingresa para disfrutar de nuestros productos, beneficios y mucho más.',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 16,
+              ),
+            ),
+            const SizedBox(height: 20), // Space between text and button
+
+            // ENTER Button
+            ElevatedButton(
+              onPressed: () {
+                // Navigate to login screen
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const LoginScreen(),
+                  ),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.purpleAccent,
+                padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 15),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30),
+                ),
+              ),
+              child: const Text(
+                'INGRESAR',
+                style: TextStyle(color: Colors.black, fontSize: 18),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// Login Screen
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'BIENVENIDO/A BM eSports Zone',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 20),
+            const Text(
+              'Inicia sesión',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+              ),
+            ),
+            const SizedBox(height: 20),
+
+            // Username Field
+            TextField(
+              decoration: InputDecoration(
+                prefixIcon: const Icon(Icons.person, color: Colors.white),
+                hintText: 'Usuario',
+                hintStyle: const TextStyle(color: Colors.white),
+                filled: true,
+                fillColor: Colors.purpleAccent,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30),
+                ),
+              ),
+              style: const TextStyle(color: Colors.white),
+            ),
+            const SizedBox(height: 20),
+
+            // Campo de Contraseña
+            TextField(
+              obscureText: true,
+              decoration: InputDecoration(
+                prefixIcon: const Icon(Icons.lock, color: Colors.white),
+                hintText: 'Contraseña',
+                hintStyle: const TextStyle(color: Colors.white),
+                filled: true,
+                fillColor: Colors.purpleAccent,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30),
+                ),
+              ),
+              style: const TextStyle(color: Colors.white),
+            ),
+            const SizedBox(height: 20),
+
+            // Botón de Registro
+            Center(
+              child: ElevatedButton(
+                onPressed: () {
+                  // Acción para registrar o iniciar sesión
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.purpleAccent,
+                  padding: const EdgeInsets.symmetric(horizontal: 60, vertical: 15),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                ),
+                child: const Text(
+                  'Regístrate YA!',
+                  style: TextStyle(color: Colors.black, fontSize: 16),
+                ),
+              ),
+            ),
+            const SizedBox(height: 40),
+
+            // Redes sociales (íconos)
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                Icon(Icons.facebook, color: Colors.purpleAccent, size: 40),
+                SizedBox(width: 20),
+                Icon(Icons.email, color: Colors.purpleAccent, size: 40),
+                SizedBox(width: 20),
+                Icon(Icons.camera_alt, color: Colors.purpleAccent, size: 40),
+              ],
             ),
           ],
         ),
